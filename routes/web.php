@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ClientController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/', [ClientController::class, 'view_create']);
+Route::post('/client-create', [ClientController::class, 'create']);
+Route::get('/get-clients', [ClientController::class, 'get_all']);
+Route::get('/get-client/{id}', [ClientController::class, 'get']);
+Route::post('/client-update', [ClientController::class, 'update']);
+Route::get('/get-all-clients-data', [ClientController::class, 'get_all_data']);
+Route::get('/client-delete/{id}', [ClientController::class, 'delete']);
+
+// Route::get('/', function () {
+//     return view('welcome');
+// });
